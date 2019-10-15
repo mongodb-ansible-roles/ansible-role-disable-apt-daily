@@ -1,0 +1,20 @@
+---
+# BUILD-6768 - Disable unattended apt update to allow apt commands to be run on startup
+- name: Disable apt-daily service
+  systemd:
+    name: apt-daily.service
+    state: stopped
+    enabled: false
+    masked: true
+
+- name: Disable apt-daily timer
+  systemd:
+    name: apt-daily.timer
+    state: stopped
+    enabled: false
+
+- name: Disable apt-daily-upgrade timer
+  systemd:
+    name: apt-daily-upgrade.timer
+    state: stopped
+    enabled: false
